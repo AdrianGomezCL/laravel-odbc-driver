@@ -46,5 +46,5 @@ composer update
 @endphp
 ```
 
-#### Original
+### Original
 * Cody Covey @ https://github.com/ccovey/odbc-driver
