@@ -1,0 +1,28 @@
+{
+    "name": "agomez/laravel-odbc-driver",
+    "description": "ODBC driver for Laravel 5.x",
+    "type": "library",
+    "keywords": ["odbc", "driver", "database"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adrian Gomez",
+            "email": "adriangomez.cl@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.3 || ^7.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Agomez\\ODBCDriver": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Agomez\\ODBCDriver\\ODBCDriverServiceProvider"
+            ]
+        }
+    }
+}
