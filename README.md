@@ -3,22 +3,14 @@
 ODBC Driver for Laravel 5.5+
 
 ### Prerequisites
-The composer.json file use the "auto discover" function so you must have laravel ^5.5
+* The composer.json file use the "auto discover" function so you must have laravel ^5.5
+* You must create a ODBC in your operating system
 
 ### Installation
 
-#### Add vcs repository to composer.json
+### Install package with composer
 ```
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/AdrianGomezCL/laravel-odbc-driver" }
-],
-```
-
-#### Add require to composer.json
-```
-"require": {
-  "agomez/laravel-odbc-driver" : "1.0"
-}
+composer require agomez/laravel-odbc-driver
 ```
 
 #### Run composer update
