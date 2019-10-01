@@ -1,13 +1,17 @@
 {
-    "name": "agomez/laravel-odbc-driver",
-    "description": "ODBC driver for Laravel 5.x",
+    "name": "https://github.com/BeKnowDo/laravel-odbc-driver",
+    "description": "ODBC driver for Laravel 6.x",
     "type": "library",
-    "keywords": ["odbc", "driver", "database"],
+    "keywords": [
+        "odbc",
+        "driver",
+        "database"
+    ],
     "license": "MIT",
     "authors": [
         {
-            "name": "Adrian Gomez",
-            "email": "adriangomez.cl@gmail.com"
+            "name": "Cesar Manuel Perez",
+            "email": "cesar@bkd.io"
         }
     ],
     "require": {
@@ -15,13 +19,13 @@
     },
     "autoload": {
         "psr-0": {
-            "Agomez\\ODBCDriver": "src/"
+            "BKD\\ODBCDriver": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Agomez\\ODBCDriver\\ODBCDriverServiceProvider"
+                "BKD\\ODBCDriver\\ODBCDriverServiceProvider"
             ]
         }
     }

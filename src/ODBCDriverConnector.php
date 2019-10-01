@@ -1,5 +1,6 @@
 <?php
-namespace Agomez\ODBCDriver;
+
+namespace BKD\ODBCDriver;
 
 use Illuminate\Database\Connectors\Connector;
 use Illuminate\Database\Connectors\ConnectorInterface;
@@ -7,7 +8,7 @@ use PDO;
 
 /**
  * Class ODBCDriverConnector
- * @package Agomez\ODBCDriver
+ * @package BKD\ODBCDriver
  */
 class ODBCDriverConnector extends Connector implements ConnectorInterface
 {
@@ -23,7 +24,8 @@ class ODBCDriverConnector extends Connector implements ConnectorInterface
         return $connection;
     }
 
-    protected function getDsn(array $config) {
+    protected function getDsn(array $config)
+    {
         extract($config);
         //$dsn = "odbc:{$dsn}; Uid={$username}; Pwd={$password}; Database={$database}";
         return "odbc:{$dsn}";
@@ -39,10 +41,9 @@ class ODBCDriverConnector extends Connector implements ConnectorInterface
      */
     public function createConnection($dsn, array $config, array $options)
     {
-        $username = array_get($config, 'username');
-        $password = array_get($config, 'password');
+        $username = Arr::get($config, 'username');
+        $password = Arr::get($config, 'password');
 
         return new PDO($dsn, $username, $password, $options);
     }
-
 }

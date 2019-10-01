@@ -1,5 +1,6 @@
 <?php
-namespace Agomez\ODBCDriver;
+
+namespace BKD\ODBCDriver;
 
 use Illuminate\Database\Connectors\ConnectionFactory;
 use Illuminate\Database\Connectors\MySqlConnector;
@@ -13,7 +14,7 @@ use Illuminate\Database\SqlServerConnection;
 
 /**
  * Class ODBCDriverConnectionFactory
- * @package Agomez\ODBCDriver
+ * @package BKD\ODBCDriver
  */
 class ODBCDriverConnectionFactory extends ConnectionFactory
 {
@@ -39,30 +40,29 @@ class ODBCDriverConnectionFactory extends ConnectionFactory
 		throw new \InvalidArgumentException("Unsupported Driver [{$config['driver']}]");
 	}
 
-	public function createConnection($driver, $connection, $database, $prefix ='', array $config = array())
+	public function createConnection($driver, $connection, $database, $prefix = '', array $config = array())
 	{
-		if ($this->container->bound($key = "db.connection.{$driver}"))
-		{
+		if ($this->container->bound($key = "db.connection.{$driver}")) {
 			return $this->container->make($key, array($connection, $database, $prefix, $config));
 		}
 
 		switch ($driver) {
-            case 'mysql':
-                return new MySqlConnection($connection, $database, $prefix, $config);
+			case 'mysql':
+				return new MySqlConnection($connection, $database, $prefix, $config);
 
-            case 'pgsql':
-                return new PostgresConnection($connection, $database, $prefix, $config);
+			case 'pgsql':
+				return new PostgresConnection($connection, $database, $prefix, $config);
 
-            case 'sqlite':
-                return new SQLiteConnection($connection, $database, $prefix, $config);
+			case 'sqlite':
+				return new SQLiteConnection($connection, $database, $prefix, $config);
 
-            case 'sqlsrv':
-                return new SqlServerConnection($connection, $database, $prefix, $config);
-                
-            case 'odbc':
-                return new ODBCDriverConnection($connection, $database, $prefix, $config);
-        }
+			case 'sqlsrv':
+				return new SqlServerConnection($connection, $database, $prefix, $config);
 
-        throw new \InvalidArgumentException("Unsupported driver [$driver]");
+			case 'odbc':
+				return new ODBCDriverConnection($connection, $database, $prefix, $config);
+		}
+
+		throw new \InvalidArgumentException("Unsupported driver [$driver]");
 	}
 }

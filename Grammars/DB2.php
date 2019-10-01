@@ -1,13 +1,15 @@
 <?php
-namespace Agomez\ODBCDriver\Grammars;
+
+namespace BKD\ODBCDriver\Grammars;
+
 use Illuminate\Database\Query\Grammars\Grammar;
 
 /**
-* DB2 Grammar
-*/
+ * DB2 Grammar
+ */
 class DB2 extends Grammar
 {
-     /**
+    /**
      * Compile the "limit" portions of the query.
      *
      * @param  Illuminate\Database\Query\Builder  $query
@@ -19,7 +21,7 @@ class DB2 extends Grammar
         return "FETCH FIRST $limit ROWS ONLY";
     }
 
-     /**
+    /**
      * Compile a select query into SQL.
      *
      * @param  Illuminate\Database\Query\Builder
@@ -32,15 +34,14 @@ class DB2 extends Grammar
         // If an offset is present on the query, we will need to wrap the query in
         // a big "ANSI" offset syntax block. This is very nasty compared to the
         // other database systems but is necessary for implementing features.
-        if ($query->offset > 0)
-        {
+        if ($query->offset > 0) {
             return $this->compileAnsiOffset($query, $components);
         }
 
         return $this->concatenate($components);
     }
 
-     /**
+    /**
      * Create a full ANSI offset clause for the query.
      *
      * @param  Illuminate\Database\Query\Builder  $query
@@ -52,8 +53,7 @@ class DB2 extends Grammar
         // An ORDER BY clause is required to make this offset query work, so if one does
         // not exist we'll just create a dummy clause to trick the database and so it
         // does not complain about the queries for not having an "order by" clause.
-        if ( ! isset($components['orders']))
-        {
+        if (!isset($components['orders'])) {
             $components['orders'] = 'order by 1';
         }
 
@@ -64,7 +64,7 @@ class DB2 extends Grammar
         // the "select" that will give back the row numbers on each of the records.
         $orderings = $components['orders'];
 
-        $columns = (!empty($components['columns']) ? $components['columns'] . ', ': 'select');
+        $columns = (!empty($components['columns']) ? $components['columns'] . ', ' : 'select');
 
         $components['columns'] = $this->compileOver($orderings, $columns);
 
@@ -100,8 +100,7 @@ class DB2 extends Grammar
     {
         $start = $query->offset + 1;
 
-        if ($query->limit > 0)
-        {
+        if ($query->limit > 0) {
             $finish = $query->offset + $query->limit;
 
             return "between {$start} and {$finish}";
@@ -110,7 +109,7 @@ class DB2 extends Grammar
         return ">= {$start}";
     }
 
-        /**
+    /**
      * Compile a common table expression for a query.
      *
      * @param  string  $sql

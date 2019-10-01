@@ -1,5 +1,6 @@
 <?php
-namespace Agomez\ODBCDriver;
+
+namespace BKD\ODBCDriver;
 
 use Illuminate\Database\DatabaseManager;
 use Illuminate\Database\Eloquent\Model;
@@ -7,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 /**
  * Class ODBCDriverServiceProvider
- * @package Agomez\ODBCDriver
+ * @package BKD\ODBCDriver
  */
 class ODBCDriverServiceProvider extends ServiceProvider
 {
@@ -30,11 +31,11 @@ class ODBCDriverServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->app->singleton('db.factory', function($app) {
+		$this->app->singleton('db.factory', function ($app) {
 			return new ODBCDriverConnectionFactory($app);
 		});
 
-		$this->app->singleton('db', function($app) {
+		$this->app->singleton('db', function ($app) {
 			return new DatabaseManager($app, $app['db.factory']);
 		});
 	}

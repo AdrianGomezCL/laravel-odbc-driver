@@ -1,14 +1,16 @@
 <?php
-namespace Agomez\ODBCDriver;
+
+namespace BKD\ODBCDriver;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Processors\Processor;
 
 /**
  * Class ODBCDriverProcessor
- * @package Agomez\ODBCDriver
+ * @package BKD\ODBCDriver
  */
-class ODBCDriverProcessor extends Processor {
+class ODBCDriverProcessor extends Processor
+{
 
     /**
      * Process an  "insert get ID" query.
@@ -36,5 +38,4 @@ class ODBCDriverProcessor extends Processor {
 
         return is_numeric($id) ? (int) $id : $id;
     }
-
 }

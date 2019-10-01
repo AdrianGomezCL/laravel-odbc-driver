@@ -10,7 +10,7 @@ ODBC Driver for Laravel 5.5+
 
 ### Install package with composer
 ```
-composer require agomez/laravel-odbc-driver
+composer require BKD/laravel-odbc-driver
 ```
 
 #### Run composer update
@@ -23,7 +23,7 @@ composer update
         'odbc' => [
             'driver' => 'odbc',
             'dsn' => 'dns name',
-            'grammar' => 'DB2',
+            'grammar' => 'SqlServerGrammar',
             'username' => 'username',
             'password' => 'password',
             'database' => 'database'
@@ -38,5 +38,5 @@ composer update
 @endphp
 ```
 
-### Original
-* Cody Covey @ https://github.com/ccovey/odbc-driver
+### Forked from:
+* Adrian Gomez @ https://github.com/AdrianGomezCL/laravel-odbc-driver

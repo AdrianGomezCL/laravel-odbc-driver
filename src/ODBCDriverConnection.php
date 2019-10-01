@@ -1,12 +1,13 @@
 <?php
-namespace Agomez\ODBCDriver;
+
+namespace BKD\ODBCDriver;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\Query\Grammars\Grammar;
 
 /**
  * Class ODBCDriverConnection
- * @package Agomez\ODBCDriver
+ * @package BKD\ODBCDriver
  */
 class ODBCDriverConnection extends Connection
 {
@@ -18,10 +19,10 @@ class ODBCDriverConnection extends Connection
 		$grammarConfig = $this->getGrammarConfig();
 
 		if ($grammarConfig) {
-			$packageGrammar = "Grammars\\" . $grammarConfig; 
+			$packageGrammar = "Grammars\\" . $grammarConfig;
 			if (class_exists($packageGrammar)) {
-                return $this->withTablePrefix(new $packageGrammar);
-            }
+				return $this->withTablePrefix(new $packageGrammar);
+			}
 
 			$illuminateGrammar = "Illuminate\\Database\\Query\\Grammars\\" . $grammarConfig;
 			if (class_exists($illuminateGrammar)) {
@@ -30,8 +31,8 @@ class ODBCDriverConnection extends Connection
 		}
 
 		return $this->withTablePrefix(new Grammar);
-    }
-    
+	}
+
 	/**
 	 * Default grammar for specified Schema
 	 * @return Schema\Grammars\Grammar
@@ -43,7 +44,7 @@ class ODBCDriverConnection extends Connection
 
 	/**
 	 * @return bool|mixed
-     */
+	 */
 	protected function getGrammarConfig()
 	{
 		if ($this->getConfig('grammar')) {
@@ -55,10 +56,9 @@ class ODBCDriverConnection extends Connection
 
 	/**
 	 * @return ODBCDriverProcessor
-     */
+	 */
 	protected function getDefaultPostProcessor()
 	{
 		return new ODBCDriverProcessor();
 	}
-	
 }
