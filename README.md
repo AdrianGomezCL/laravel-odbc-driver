@@ -1,9 +1,9 @@
 # laravel-odbc-driver
 
-ODBC Driver for Laravel 5.5+
+ODBC Driver for Laravel v6.0+
 
 ### Prerequisites
-* The composer.json file use the "auto discover" function so you must have laravel ^5.5
+* The composer.json file use the "auto discover" function so you must have laravel ^6.0
 * You must create a ODBC in your operating system
 
 ### Installation
