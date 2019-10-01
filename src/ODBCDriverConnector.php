@@ -2,6 +2,7 @@
 
 namespace BKD\ODBCDriver;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Connectors\Connector;
 use Illuminate\Database\Connectors\ConnectorInterface;
 use PDO;
