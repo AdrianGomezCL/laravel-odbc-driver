@@ -1,5 +1,5 @@
 {
-    "name": "BeKnowDo/laravel-odbc-driver",
+    "name": "be-know-do/laravel-odbc-driver",
     "description": "ODBC driver for Laravel 6.x",
     "type": "library",
     "keywords": [
